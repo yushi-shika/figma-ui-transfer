@@ -1,0 +1,101 @@
+/*
+ * ★ Screens/Signup — docs/figma-fixtures/screens/signup/design-context.md の座標をそのまま採用。
+ * キャンバス 375x812。既存の Input(default)/Button(primary) を絶対配置で組み合わせる。
+ */
+.screen {
+  position: relative;
+  width: 375px;
+  height: 812px;
+  overflow: hidden;
+  background: #ffffff;
+  font-family: var(--font-family);
+}
+
+.background {
+  position: absolute;
+  left: -52px;
+  top: -60px;
+  width: 797px;
+  height: 1039px;
+}
+
+.backgroundImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.logo {
+  position: absolute;
+  left: 121px;
+  top: 61px;
+  width: 133px;
+  height: 130px;
+}
+
+.logoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.field {
+  position: absolute;
+  left: 48px;
+}
+
+.fieldFullName {
+  top: 348px;
+}
+
+.fieldEmail {
+  top: 432px;
+}
+
+.fieldPassword {
+  top: 528px;
+}
+
+.submit {
+  position: absolute;
+  left: 72px;
+  top: 648px;
+}
+
+.signInText {
+  position: absolute;
+  left: 98px;
+  top: 701px;
+  margin: 0;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
+}
+
+.inlineLink {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.privacyLink {
+  position: absolute;
+  left: 147px;
+  top: 768px;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
+  cursor: pointer;
+}

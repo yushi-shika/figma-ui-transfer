@@ -1,0 +1,83 @@
+/*
+ * ★ Default: 288x43, bg rgba(255,255,255,0.65) + blur(4px),
+ *   border 0.5px rgba(217,217,217,0.96), radius 6px, label/value black 13px regular
+ * ☆ Focus/Error/Disabled: 外挿 (design-system-rules.md)
+ */
+.wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-family);
+}
+
+.label {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
+}
+
+.fieldWrap {
+  position: relative;
+}
+
+.input {
+  box-sizing: border-box;
+  width: 288px;
+  height: var(--size-input-height);
+  background: var(--color-surface-input);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-style: solid;
+  border-width: var(--border-width-default);
+  border-color: var(--color-border-default);
+  border-radius: var(--radius-sm);
+  padding: 0 12px;
+  font-family: inherit;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
+}
+
+.input:focus-visible {
+  outline: none;
+  border-width: var(--border-width-focus-or-selected);
+  border-color: var(--color-accent);
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Visual state overrides (☆, forced via args for Storybook, independent of real DOM state) */
+.stateFocus .input {
+  outline: none;
+  border-width: var(--border-width-focus-or-selected);
+  border-color: var(--color-accent);
+}
+
+.stateError .input {
+  border-color: var(--color-error);
+}
+
+.stateDisabled .input {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}
+
+.hideToggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: var(--font-size-body);
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.hideToggle:disabled {
+  cursor: not-allowed;
+}

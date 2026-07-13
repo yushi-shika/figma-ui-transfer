@@ -1,0 +1,22 @@
+name: widgetbook_workspace
+description: "Widgetbook workspace for the Figma comparison research app."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  app:
+    path: ../app
+  flutter:
+    sdk: flutter
+  widgetbook: ^3.25.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true

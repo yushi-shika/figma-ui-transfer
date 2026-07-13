@@ -1,0 +1,43 @@
+/**
+ * Design tokens extracted from docs/design-system-rules.md
+ *
+ * ★ = Figmaから直接抽出した値 (Figma忠実度の評価対象)
+ * ☆ = Figmaにサンプルがなく本書 (design-system-rules.md) で外挿した値
+ *      (Disabled / Focus / Error / Selected / size s・l など)
+ */
+:root {
+  /* Color — ★ */
+  --color-surface-input: rgba(255, 255, 255, 0.65);
+  --color-border-default: rgba(217, 217, 217, 0.96);
+  --color-border-muted: rgba(217, 217, 217, 0.8);
+  --color-button-primary-bg: rgba(21, 21, 21, 0.65);
+  --color-button-secondary-bg: #151515;
+  --color-text-primary: #000000;
+  --color-text-on-dark: #ffffff;
+  --color-text-muted: rgba(0, 0, 0, 0.44);
+
+  /* Color — ☆ (外挿) */
+  --color-accent: #151515;
+  --color-error: #d64545;
+  --opacity-disabled: 0.4;
+
+  /* Shape / spacing — ★ */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --size-button-height-primary: 43px;
+  --size-button-height-secondary: 47px;
+  --size-input-height: 43px;
+  --size-card-image-width: 327px;
+  --size-card-image-height: 264px;
+  --border-width-default: 0.5px;
+
+  /* Shape — ☆ (外挿) */
+  --border-width-focus-or-selected: 1.5px;
+
+  /* Typography — ★ (フォントサイズ・weight) / ☆ (フォールバックのfont-family方針) */
+  --font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-size-body: 13px;
+  --font-size-medium: 14px;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+}
