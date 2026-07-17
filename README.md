@@ -2,6 +2,18 @@
 
 Figmaのデザインを、Claude Code + Figma MCP(Model Context Protocol)経由で読み取り、**Flutter / React / React Native** の3つの技術スタックへ変換した際の、実装しやすさ・忠実度・カタログツール(Storybook/Widgetbook)の使い勝手を比較した社内研究プロジェクトです。
 
+> **非エンジニアの方へ**: 専門用語を噛み砕いた解説 → [docs/how-we-did-it.md](docs/how-we-did-it.md)
+
+## 成果物デモ(ブラウザでそのまま見られます)
+
+| スタック | 公開URL(Vercel) |
+|---|---|
+| React + Storybook | https://figma-ui-transfer-react-storybook.vercel.app |
+| React Native + Storybook(Web版) | https://figma-ui-transfer-rn-storybook.vercel.app |
+| Flutter + Widgetbook(Web版) | https://figma-ui-transfer-flutter-widgetboo.vercel.app |
+
+各サイトの左メニューから「Screens > Signup」で組み立てた画面全体、「Button / Input / Card」で部品カタログが見られます。
+
 ## 参照したFigmaファイル
 
 | ファイル | URL | 用途 |

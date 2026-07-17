@@ -100,3 +100,18 @@
 - **Variant/トークンの意味情報**: 想定通り失われている。「Button」という名前のフレームが4つ並ぶだけで、`variant=primary/secondary`や`size=s/m/l`といったプロパティ情報はキャプチャに反映されない(ただの見た目のフレーム)。Figma Variables/Component Variantとしては再構築されない。
 - **Auto Layout / Shadow / Border**: `get_metadata`はXML構造(位置・サイズ)のみを返すため詳細確認は`get_design_context`が必要だが、月6回の残り枠温存のため今回は見送り。ブラウザスクリーンショットとの目視比較では、色・角丸・レイアウト位置は元のReact実装と一致しているように見える。
 - **結論**: 7-Aは「見た目の忠実な取り込み」には有効だが、意味情報(variant/token)は失われるという計画の前提通りの結果。7-B(`use_figma`によるComponent Set再構築)はFull seat不足のため未実施(計画通りスキップ)。
+
+## デプロイ(2026-07-13、上司共有依頼を受けて実施)
+
+- **React Storybook**: https://figma-ui-transfer-react-storybook.vercel.app (Vercel, `react-storybook/storybook-static`を静的デプロイ。プロジェクト: `yushis-projects-30e6e68e/figma-ui-transfer-react-storybook`)
+- **React Native Storybook(Web版)**: https://figma-ui-transfer-rn-storybook.vercel.app (Vercel, `rn-storybook/storybook-static`を静的デプロイ。プロジェクト: `yushis-projects-30e6e68e/figma-ui-transfer-rn-storybook`)
+- **Flutter Widgetbook(Web版)**: https://figma-ui-transfer-flutter-widgetboo.vercel.app (Vercel, `flutter-widgetbook/widgetbook/build/web`を静的デプロイ。プロジェクト: `yushis-projects-30e6e68e/figma-ui-transfer-flutter-widgetbook`。Widgetbookワークスペースは`--platforms=macos,web`で作成済みのためWeb版ビルドが可能だった)
+- Figma Drafts(Phase 7-A成果物): `Figma比較研究 - React Code Capture` (fileKey `zd6oOjMxLqgzE1Y667sPeB`) — https://www.figma.com/design/zd6oOjMxLqgzE1Y667sPeB — Draftsファイルのためユーザー本人のFigmaアカウントでログインが必要。
+
+## カタログツールの見た目差異に関する所見(2026-07-13)
+
+デプロイ後のユーザーレビューで「WidgetbookのボタンがStorybookより低い位置に見える」との指摘。調査の結果、**実装コードは完全一致**(`signup_screen.dart`と`SignupScreen.module.css`ともに`left:72/top:648`、ボタン高さも`tokens.dart`の`buttonHeightPrimary=43`と`tokens.css`の`--size-button-height-primary:43px`で一致)。
+
+原因は`flutter-widgetbook/widgetbook/lib/main.dart`の`DeviceFrameAddon(devices: [Devices.ios.iPhone13, ...])`設定。Widgetbookは全use-caseをiPhone13の実機フレーム(390×844、ノッチ/ステータスバー付き)で包んで表示するのに対し、Storybookはコンポーネントを枠なしでそのまま表示する。SignupScreenは375×812固定サイズのため、iPhone13フレーム内に収まる際に余白/ステータスバー分だけ画面全体が視覚的に下にずれる。
+
+→ **実装の忠実度問題ではなく、カタログツール自体のデフォルト表示挙動の違い**(Widgetbook=デバイスフレームでラップ / Storybook=素の表示)。比較研究の観点としては「カタログDX」の軸に記録すべき差異(Widgetbookはデバイスプレビューが標準機能として強い、Storybookは素のコンポーネント確認に向く、という trade-off)。
